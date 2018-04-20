@@ -1,0 +1,80 @@
+<div *ngIf="this.currTemp=='login'" style="width:100%;position: relative;top:100px;"  class="app flex-row align-items-center">
+  <div class="container" style="position: relative">
+    <div class="row justify-content-center">
+      <div class="col-sm-6">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-body">
+              <h1>Login</h1>
+              <p class="text-muted">Sign In to your account</p>
+              <form [formGroup]="form1" (ngSubmit)="loginUser()" class="form-group">
+              <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="icon-user"></i></span>
+                <input [ngClass]="{invalidFormFields:username.touched && username.invalid}"  formControlName="username" placeholder="Username" type="text" id="email" class="form-control">
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input [ngClass]="{invalidFormFields:password.touched && password.invalid}"  placeholder="Password" formControlName="password" type="password" id="password" class="form-control">
+              </div>
+              <div *ngIf="loginError" class="alert alert-danger">{{this.loginError}}</div>
+              
+             <!-- <div *ngIf="(email.touched && email.invalid)||(password.touched && password.invalid)" class="alert alert-danger">Fields are required</div>-->
+              <div class="row">
+                <div class="col-6">
+                  <button [disabled]="this.loginSpin" type="submit" class="btn btn-primary px-4">Login</button>
+                </div>
+                <spinner style="position: relative;left:-40px;bottom : 100px;z-index:999;" *ngIf="loginSpin"  [size]="70" [tickness]="4"></spinner>
+              </div>
+            
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="this.currTemp=='register'" style="width:100%;position: relative;top:100px;"  class="app flex-row align-items-center">
+    <div class="container" style="position: relative">
+      <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <div class="card-group mb-0">
+            <div class="card p-4">
+              <div class="card-body">
+                <h1>Signup</h1>
+                <p class="text-muted">Sign Up to your account</p>
+                <form [formGroup]="form2" (ngSubmit)="registerUser()" class="form-group">
+                <div class="input-group mb-3">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <input  formControlName="name" placeholder="Name" type="text" id="name" class="form-control">
+                </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <input  placeholder="Age" formControlName="age" type="text" id="age" class="form-control">
+                </div>
+                
+                
+               <!-- <div *ngIf="(email.touched && email.invalid)||(password.touched && password.invalid)" class="alert alert-danger">Fields are required</div>-->
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-primary px-4">Login</button>
+                  </div>
+                 
+                </div>
+              
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<style>
+    .invalidFormFields{
+      border-color :red ;
+      border-width:2px;
+    }
+</style>

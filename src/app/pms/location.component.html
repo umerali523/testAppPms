@@ -1,0 +1,41 @@
+<div class="container">
+    <legend>Locations</legend>
+    <table *ngIf="recordStatus" class="table">
+        
+        <tr>
+            <td>Practice</td>
+            <td>Person Contact</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>NPI</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Country</td>
+           
+        </tr>
+        <tr *ngFor="let location of locationList,let i = index">
+            <td>{{location.name}}</td>
+            <td>{{location.contact_person}}</td>
+            <td>{{location.email}}</td>
+            <td>{{location.phone}}</td>
+            <td>{{location.npi}}</td>
+            <td>{{location.city}}</td>
+            <td>{{location.state}}</td>
+            <td>{{location.country_code}}</td>
+           
+        </tr>
+        <div >
+            <div style="position: relative;left: 400px;top: 10px;" *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+        </div>  
+        
+    </table>
+    <div *ngIf="!recordStatus">
+        No Record Exist
+    </div>
+    <spinner style="position: relative;left:480px;z-index:999;" *ngIf="mListSpin"  [size]="70" [tickness]="4"></spinner>
+</div>
+
+
+
+
+

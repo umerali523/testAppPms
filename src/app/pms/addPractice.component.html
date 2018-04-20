@@ -1,0 +1,155 @@
+<div  style="width:100%;"  class="app flex-row align-items-center">
+    <div class="container" style="position: relative">
+      <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <div class="card-group mb-0">
+            <div class="card p-4">
+              <div class="card-body">
+                <h1>Add Member</h1>
+                <p class="text-muted"></p>
+                <form [formGroup]="form" (ngSubmit)="addMember()" class="form-group">
+                  
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                    <label  for="name">Name</label>
+                  <label class="requiredLabels" style="color: red;">*</label>
+                  </div>
+                  
+                  <label  class="inputErrors">{{this.nameError}}</label>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <input [ngClass]="{invalidFormFields:name.touched && name.invalid}" formControlName="name" placeholder="Name" type="text" id="name" class="form-control">
+                </div>
+
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                      <label  for="email">Email address</label>
+                      <label class="requiredLabels" style="color: red;">*</label>
+                  </div>
+                    
+                    <label  class="inputErrors">{{this.emailError}}</label>
+                  </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <input [ngClass]="{invalidFormFields:email.touched && email.invalid}" formControlName="email" placeholder="Email" type="text" id="email" class="form-control">
+                </div>
+                <!-- <div class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <input [ngClass]="{invalidFormFields:speed_limit.touched && speed_limit.invalid}"  placeholder="Speed Limit" formControlName="speed_limit" type="text" id="password" class="form-control">
+                </div>
+                <div class="input-group mb-4">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input [ngClass]="{invalidFormFields:time_limit.touched && time_limit.invalid}"  placeholder="Time Limit" formControlName="time_limit" type="text" id="password" class="form-control">
+                </div> -->
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                      <label for="phone">Phone Number</label>
+                      <label class="requiredLabels" style="color: red;">*</label>
+                  </div>
+                    <label  class="inputErrors">{{this.phoneError}}</label>
+                  </div>
+                <div class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <input [ngClass]="{invalidFormFields:phone.touched && phone.invalid}"  placeholder="Phone Number" dropSpecialCharacters="false" formControlName="phone" type="text" id="phone" class="form-control" mask="(000) 000-0000">
+                </div>
+
+                <div class="input-group mb-1">
+                    <div class="inputLabels">
+                        <label for="dob">DOB</label>
+                        <label class="requiredLabels" style="color: red;">*</label>
+                    </div>
+                      <label  class="inputErrors">{{this.dobError}}</label>
+                    </div>
+                  <div class="input-group mb-4">
+                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                    <input [ngClass]="{invalidFormFields:dob.touched && dob.invalid}"  placeholder="Date of birth" formControlName="dob" type="text" id="dob" class="form-control" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" clearIfNotMatch="true" dropSpecialCharacters="false"  mask="00/00/0000" >
+                  </div>
+                <!-- <div class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <select formControlName="country">Select Country</select>
+                  <option value="">Select Country</option>
+                  <option value="pakistan">Pakistan</option>
+                  <option value="india">India</option>
+                  <option value="china">China</option>
+                </div> -->
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                    <label for="country">Country</label>
+                    <label  style="color: red;">*</label>
+                  </div>
+                  <label  class="inputErrors">{{this.countryError}}</label>
+                </div>
+                <div  class="input-group mb-4">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <select [ngClass]="{invalidFormFields:country.touched && country.invalid}"  style="height:38px;"  formControlName="country" class="form-control">
+                    <option value="">Select Country</option>
+                    <option value="pakistan">Pakistan</option>
+                    <option value="china">China</option>
+                  </select>
+                </div>
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                    <label for="address">Address</label>
+                    <label  style="color: red;">*</label>
+                  </div>
+                  <label  class="inputErrors">{{this.addressError}}</label>
+                </div>
+                <div  style="margin-bottom: 10px;">
+                 
+                  <textarea cols="80" [ngClass]="{invalidFormFields:address.touched && address.invalid}" class="form-control" formControlName="address"></textarea>
+                  
+                </div>
+
+                <div class="input-group mb-1">
+                  <div class="inputLabels">
+                      <label  for="country">Gender</label>
+                      <label class="requiredLabels" style="color: red;">*</label>
+                  </div>
+                  <label  class="inputErrors">{{this.genderError}}</label>
+                  </div>
+                <div  class="form-control" style="margin-bottom: 10px;">
+                  <label class="center-block"><input type="radio" formControlName="gender" value="male">Male</label>
+                  <label class="center-block"><input type="radio" formControlName="gender" value="female">Female</label>
+                </div>
+                
+                <div class="form-control" style="margin-bottom: 10px;">
+                  <label class="center-block">
+                    <input type="checkbox" formControlName="rememberLogin">Remember Login
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button  type="submit" class="btn btn-primary px-4">Add Member</button>
+                  </div>
+                 
+                </div>
+              
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <style>
+      .invalidFormFields{
+        border-color :red ;
+        border-width:2px;
+      }
+      .inputLabels{
+        font-weight: bold;
+        width: 170px;
+      }
+      .requiredLabels{
+        margin-left: 5px;
+      }
+      .inputErrors{
+        color: red;
+   
+      }
+  </style>
+  
